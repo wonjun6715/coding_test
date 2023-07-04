@@ -1,9 +1,6 @@
 def solution(arr):
     answer = []
-    answer.append(arr[0])
-    for i in range(1, len(arr)):
-        if arr[i - 1] == arr[i]:
-            continue
-        else:
-            answer.append(arr[i])
+    for c in arr:
+        if len(answer) == 0 or answer[-1] != c: # 스택이 비어있거나, top가 push 하는 수와 다른 경우
+            answer.append(c)
     return answer
