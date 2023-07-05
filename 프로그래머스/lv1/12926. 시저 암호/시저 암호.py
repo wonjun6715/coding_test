@@ -1,15 +1,11 @@
 def solution(s, n):
     answer = ''
-    length = len(s)
-    for i in range(length):
-        if s[i] == ' ':
-            answer += ' '
-        elif ord(s[i]) >= ord('a') and ord(s[i]) + n > ord('z'):
-            number = ord(s[i]) + n - 26
-            answer += chr(number)
-        elif ord(s[i]) <= ord('Z') and ord(s[i]) + n > ord('Z'):
-            number = ord(s[i]) + n - 26
-            answer += chr(number)
-        else:
-            answer += chr(ord(s[i]) + n)
+    s = list(s)
+    for i in range(len(s)):
+        if s[i].isupper():
+            s[i] = chr((ord(s[i]) + n - ord('A')) % 26 + ord('A'))
+        elif s[i].islower():
+            s[i] = chr((ord(s[i]) + n - ord('a')) % 26 + ord('a'))   
+    
+    answer = ''.join(s)
     return answer
