@@ -1,20 +1,8 @@
 def solution(s):
-    k = []
-    answer = ''
-    alpha = ['zero','one','two','three','four','five','six','seven','eight','nine','ten']
-    numbers = ['0','1','2','3','4','5','6','7','8','9']
+    answer = s
+    num_dict = {"zero":"0", "one":"1", "two":"2", "three":"3", "four":"4", "five":"5", "six":"6", "seven":"7", "eight":"8", "nine":"9"}
     
-    for word in s:
-        answer += word
-        if answer in alpha:
-            k.append(answer)
-            answer = ''
-        if answer in numbers:
-            k.append(answer)
-            answer = ''
-    for i in range(len(k)):
-        for j in range(len(alpha)):
-            if k[i] == alpha[j]:
-                k[i] = numbers[j]
-    a = int(''.join(k))
-    return a
+    for key, value in num_dict.items():
+        answer = answer.replace(key, value)
+    
+    return int(answer)
