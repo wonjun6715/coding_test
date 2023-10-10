@@ -1,5 +1,4 @@
 import sys
-
 class Heap:
     def __init__(self):
         self.heap = []
@@ -29,12 +28,15 @@ class Heap:
         left_idx = idx * 2
         right_idx = idx * 2 + 1
         
+        # 자식 노드가 없는 경우
         if left_idx >= len(self.heap):
             return False
+        #왼쪽 자식 노드만 있을 경우
         elif right_idx >= len(self.heap):
             if self.heap[left_idx] > self.heap[idx]:
                 self.flag = 1
                 return True
+        # 자식 노드가 모두 있을 경우
         else:
             if self.heap[left_idx] > self.heap[right_idx]:
                 if self.heap[left_idx] > self.heap[idx]:
@@ -45,7 +47,6 @@ class Heap:
                     self.flag = 2
                     return True
         return False
-                    
     def pop(self):
         if len(self.heap) <= 1:
             return None
@@ -67,10 +68,11 @@ class Heap:
             elif self.flag == 2:
                 self.heap[right_idx], self.heap[idx] = self.heap[idx], self.heap[right_idx]
                 idx = right_idx
-        return max_val
+        return max_val            
 
 if __name__ == '__main__':
     max_heap = Heap()
+    
     input = sys.stdin.readline
     
     N = int(input())
