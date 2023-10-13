@@ -1,9 +1,8 @@
 def solution(array, commands):
     answer = []
     tmp = []
-    for i in range(len(commands)):
-        for j in range(len(commands[i])):
-            tmp = array[commands[i][0] - 1:commands[i][1]]
-            tmp.sort()
-        answer.append(tmp[commands[i][2] - 1])
+    for command in commands:
+        i, j, k = command
+        tmp = sorted(array[i- 1:j])
+        answer.append(tmp[k - 1])
     return answer
