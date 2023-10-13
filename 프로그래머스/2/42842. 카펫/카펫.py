@@ -1,8 +1,14 @@
+
 def solution(brown, yellow):
     answer = []
-    size = brown + yellow
-    for i in range(size, -1, -1):
-        if size % i == 0:
-            div = size // i
-            if (i - 2) * (div -2) == yellow:
-                return[i, div]
+    total = brown + yellow
+    for b in range(1, total + 1):
+        if (total / b) % 1 == 0:
+            a = total / b
+            if a >= b:
+                if 2*a + 2*b == brown + 4:
+                    return [a,b]
+                
+    return answer
+            
+            
