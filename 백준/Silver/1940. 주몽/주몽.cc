@@ -1,4 +1,6 @@
 #include <iostream>
+#include <algorithm>
+#include <vector>
 
 using namespace std;
 
@@ -9,21 +11,34 @@ int main() {
 
 	int n, m;
 	int count = 0;
-
+	
 	cin >> n;
 	cin >> m;
 
-	int arr[15000];
+	int start_index = 0;
+	int end_index = n - 1;
+
+	vector<int> arr;
 
 	for (int i = 0; i < n; i++) {
-		cin >> arr[i];
+		int tmp;
+		cin >> tmp;
+		arr.push_back(tmp);
 	}
 
-	for (int i = 0; i < n - 1; i++) {
-		for (int j = i + 1; j < n; j++) {
-			if (arr[i] + arr[j] == m) {
-				count++;
-			}
+	sort(arr.begin(), arr.end());
+
+	while (start_index < end_index) {
+		if (arr[start_index] + arr[end_index] < m) {
+			start_index++;
+		}
+		else if (arr[start_index] + arr[end_index] > m) {
+			end_index--;
+		}
+		else {
+			count++;
+			start_index++;
+			end_index--;
 		}
 	}
 
